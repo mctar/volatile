@@ -25,6 +25,10 @@ The source stays on the repository’s `main` branch. The original Sites remote 
 
 ## What works
 
+- Switch between open exploration and Dumpling mode, with a shareable `?mode=dumpling` link.
+- Explore 12 dumpling experiments with wrapper, filling, sauce, finish, cooking method and a tasting variable.
+- Filter themed ideas by ingredient (including aliases), method and plant-based components; sort by adventurousness.
+- Save themed ideas and notes alongside existing pairings, and include their full instructions in notebook exports.
 - Search and select any of 150 ingredient profiles.
 - Explore 615 authored two-ingredient combinations through map and list views.
 - Rank by familiar, unexpected or exploratory culinary character.
@@ -35,6 +39,14 @@ The source stays on the repository’s `main` branch. The original Sites remote 
 - Read the methodology and linked research.
 
 The notebook uses browser localStorage. It is private to that browser and origin, is not account-synced, and can be lost if browser data is cleared. Export is provided to keep a copy. The GitHub Pages edition is public at https://volatile.btrbot.com. Notes from the original demo do not automatically transfer because the browser origins differ.
+
+## Kitchen themes
+
+`lib/kitchen-modes.ts` defines reusable theme metadata, component roles, techniques and curated concepts. Each concept references an existing pairing, so its aroma bridge or culinary contrast remains visible. The theme workspace renders this structure without changing the 150-ingredient catalogue or the 615 original pairings. New themes can provide their own roles and concepts in the registry.
+
+Dumpling mode is the first theme: 12 original kitchen experiments, including 6 plant-based concepts. The recipes are untested starting points with qualitative preparation guidance, not generated or validated predictions. The plant-based filter covers all authored components; prepared wrappers, miso and other products must match the stated guidance. The ordinary explorer retains its narrower two-ingredient plant filter.
+
+The notebook keeps its existing storage key and accepts both original pairing IDs and distinct theme-concept IDs. Existing notes are preserved.
 
 ## Data and scientific limits
 
@@ -48,6 +60,8 @@ The plant-ingredient filter excludes dairy, eggs, meat, seafood and honey from t
 
 ## Validation
 
+- Dumpling-mode checks: valid underlying pairings and component IDs, all four roles, plant-based ingredient coverage, combined filters, aliases, novelty sorting and full notebook export content.
+- Browser-tested theme switching, direct links, empty-state reset, mixed notebook save/update/reload/removal, and phone/desktop layouts.
 - TypeScript check passed.
 - Data invariants checked: 150 profiles, 615 distinct pairs, at least four partners for every ingredient, type filters, plant exclusion and novelty ordering.
 - Browser checks: ingredient selection, map/list switching, combined filters, keyboard novelty control, detail panels, save/update notes, persistence after reload, removal, library empty state and clear filters.
