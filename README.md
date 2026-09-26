@@ -25,8 +25,8 @@ The source stays on the repository’s `main` branch. The original Sites remote 
 
 ## What works
 
-- Search and select any of 57 ingredient profiles.
-- Explore 243 authored two-ingredient combinations through map and list views.
+- Search and select any of 150 ingredient profiles.
+- Explore 615 authored two-ingredient combinations through map and list views.
 - Rank by familiar, unexpected or exploratory culinary character.
 - Filter for aroma bridges, sensory contrasts and plant ingredients.
 - Open a pairing for its rationale and an actionable dish idea.
@@ -40,21 +40,23 @@ The notebook uses browser localStorage. It is private to that browser and origin
 
 `lib/pairings.ts` contains the manually authored demonstration dataset. Shared-compound equality determines the displayed bridge label; all other pairs are described as contrasts. Novelty is an editorial rating, and ranking sorts by distance from the selected rating. It is not a trained model, measured compatibility, recipe-corpus novelty or an odour-activity calculation. A qualitative pairing idea is not a guarantee of taste compatibility.
 
+134 profiles contain selected chemical annotations. The remaining 16 explicitly show that their compound profile is not yet annotated and still offer authored culinary contrasts. Search accepts common names such as eggplant, zucchini, arugula, shrimp and yogurt, as well as aroma and compound names.
+
 Ingredient profiles are illustrative selections, not exhaustive or batch-specific chemical analyses. No FlavorDB, FooDB, Pyrfume, RecipeNLG or other restricted dataset has been imported. Licensing permissions must be resolved before production datasets are added. A production system should track source and licence per observation, normalize ingredient identities, combine concentrations with matrix-specific odour thresholds, evaluate perceptual mixtures, and validate predictions through chef tasting. The supplied research informed this architecture; production data integrations remain future work.
 
-The plant-ingredient filter excludes dairy, meat, seafood and honey from the two featured ingredients, not every possible animal product in the authored preparation ideas. The UI explicitly explains this distinction.
+The plant-ingredient filter excludes dairy, eggs, meat, seafood and honey from the two featured ingredients, not every possible animal product in the authored preparation ideas. The UI explicitly explains this distinction.
 
 ## Validation
 
 - TypeScript check passed.
-- Data invariants checked: 57 profiles, 243 distinct pairs, at least four partners for every ingredient, type filters, plant exclusion and novelty ordering.
+- Data invariants checked: 150 profiles, 615 distinct pairs, at least four partners for every ingredient, type filters, plant exclusion and novelty ordering.
 - Browser checks: ingredient selection, map/list switching, combined filters, keyboard novelty control, detail panels, save/update notes, persistence after reload, removal, library empty state and clear filters.
 - Desktop (1440 px) and mobile (390 px) layouts inspected; no horizontal overflow at 390 px. Mobile navigation checked.
 - No browser console warnings or errors during the checked flows.
 
 ## Image assets
 
-The expanded edition adds three unedited 1254 × 1254 sprites, with sixteen cells each: `public/images/ingredients-fruit.png`, `ingredients-garden.png` and `ingredients-pantry.png`. See [the generation prompts](docs/ingredient-imagery.md).
+The expanded edition adds three unedited 1254 × 1254 sprites, with sixteen cells each: `public/images/ingredients-fruit.png`, `ingredients-garden.png` and `ingredients-pantry.png`. The 150-ingredient edition adds six more matching sprites: `ingredients-orchard.png`, `ingredients-vegetables.png`, `ingredients-leaves.png`, `ingredients-spices.png`, `ingredients-storecupboard.png` and `ingredients-larder.png`. See [the generation prompts](docs/ingredient-imagery.md) and [catalogue research notes](docs/catalogue-research.md).
 
 ### Original sprite
 

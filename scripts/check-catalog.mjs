@@ -1,7 +1,13 @@
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
-import { ingredients, pairings, findPairings, isPlantIngredient } from '../lib/pairings.ts';
+import { ingredients, pairings, findPairings, isPlantIngredient, matchesIngredient } from '../lib/pairings.ts';
 const root = new URL('../', import.meta.url);
+assert.equal(ingredients.length, 150, 'Chef catalogue must contain exactly 150 ingredients');
+for (const id of ['egg','honey','prawn','feta','beef']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), false, `${id} must be excluded by the plant filter`);
+for (const id of ['tofu','nori','chickpea']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), true);
+for (const [query,id] of [['zucchini','courgette'],['eggplant','aubergine'],['shrimp','prawn'],['yogurt','yoghurt'],['szechuan','sichuan-pepper'],['arugula','rocket']]) assert.ok(matchesIngredient(ingredients.find(i=>i.id===id),query));
+assert.ok(matchesIngredient(ingredients.find(i=>i.id==='cinnamon'),'cinnamaldehyde'));
+assert.equal(new Set(ingredients.map(i=>`${i.sheet||'original'}:${i.index}`)).size, ingredients.length, 'Each ingredient needs its own image cell');
 const ids = new Set(ingredients.map(i => i.id));
 assert.equal(ids.size, ingredients.length, 'Ingredient IDs must be unique');
 assert.equal(new Set(pairings.map(p => p.id)).size, pairings.length, 'Pairs must be unique');
