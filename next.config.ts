@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
-
+import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: process.env.GITHUB_PAGES === 'true' ? 'export' : undefined,
+  images: { unoptimized: true },
 };
-
 export default nextConfig;

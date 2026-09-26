@@ -13,13 +13,20 @@ The default local URL is http://localhost:5173. To use port 3000, run `npm run d
 
 ```sh
 npx tsc --noEmit
-npm run build
+npm run check:catalog
+npm run build:pages
 ```
+
+## GitHub Pages
+
+`npm run build:pages` exports the app into `dist/client`, including `CNAME` for `volatile.btrbot.com` and `.nojekyll`. Publish that directory as the root of the `gh-pages` branch in `mctar/volatile`, then configure Pages to deploy from that branch. The domain CNAME points to `mctar.github.io`. The build needs no server, API keys or login.
+
+The source stays on the repository’s `main` branch. The original Sites remote and ordinary development build remain available.
 
 ## What works
 
-- Search and select any of nine ingredient profiles.
-- Explore all 36 unique two-ingredient combinations through map and list views.
+- Search and select any of 57 ingredient profiles.
+- Explore 243 authored two-ingredient combinations through map and list views.
 - Rank by familiar, unexpected or exploratory culinary character.
 - Filter for aroma bridges, sensory contrasts and plant ingredients.
 - Open a pairing for its rationale and an actionable dish idea.
@@ -27,25 +34,29 @@ npm run build
 - Browse ingredients by category and aroma notes.
 - Read the methodology and linked research.
 
-The notebook uses browser localStorage. It is private to that browser and origin, is not account-synced, and can be lost if browser data is cleared. Export is provided to keep a copy. The deployed Site is owner-private.
+The notebook uses browser localStorage. It is private to that browser and origin, is not account-synced, and can be lost if browser data is cleared. Export is provided to keep a copy. The GitHub Pages edition is public at https://volatile.btrbot.com. Notes from the original demo do not automatically transfer because the browser origins differ.
 
 ## Data and scientific limits
 
-`lib/pairings.ts` contains the small, manually authored demonstration dataset. Shared-compound equality determines the displayed bridge label; all other pairs are described as contrasts. Novelty is an editorial rating, and ranking sorts by distance from the selected rating. It is not a trained model, measured compatibility, recipe-corpus novelty or an odour-activity calculation. A qualitative pairing idea is not a guarantee of taste compatibility.
+`lib/pairings.ts` contains the manually authored demonstration dataset. Shared-compound equality determines the displayed bridge label; all other pairs are described as contrasts. Novelty is an editorial rating, and ranking sorts by distance from the selected rating. It is not a trained model, measured compatibility, recipe-corpus novelty or an odour-activity calculation. A qualitative pairing idea is not a guarantee of taste compatibility.
 
 Ingredient profiles are illustrative selections, not exhaustive or batch-specific chemical analyses. No FlavorDB, FooDB, Pyrfume, RecipeNLG or other restricted dataset has been imported. Licensing permissions must be resolved before production datasets are added. A production system should track source and licence per observation, normalize ingredient identities, combine concentrations with matrix-specific odour thresholds, evaluate perceptual mixtures, and validate predictions through chef tasting. The supplied research informed this architecture; production data integrations remain future work.
 
-The plant-ingredient filter excludes Parmesan from pairs, not every possible animal product in the authored preparation ideas. The UI explicitly explains this distinction.
+The plant-ingredient filter excludes dairy, meat, seafood and honey from the two featured ingredients, not every possible animal product in the authored preparation ideas. The UI explicitly explains this distinction.
 
 ## Validation
 
 - TypeScript check passed.
-- Data invariants checked: nine profiles, 36 distinct pairs, eight partners for every ingredient, type filters, plant exclusion and novelty ordering.
+- Data invariants checked: 57 profiles, 243 distinct pairs, at least four partners for every ingredient, type filters, plant exclusion and novelty ordering.
 - Browser checks: ingredient selection, map/list switching, combined filters, keyboard novelty control, detail panels, save/update notes, persistence after reload, removal, library empty state and clear filters.
 - Desktop (1440 px) and mobile (390 px) layouts inspected; no horizontal overflow at 390 px. Mobile navigation checked.
 - No browser console warnings or errors during the checked flows.
 
-## Image asset
+## Image assets
+
+The expanded edition adds three unedited 1254 × 1254 sprites, with sixteen cells each: `public/images/ingredients-fruit.png`, `ingredients-garden.png` and `ingredients-pantry.png`. See [the generation prompts](docs/ingredient-imagery.md).
+
+### Original sprite
 
 `public/images/ingredients.png` is the final 1254 × 1254 ingredient sprite, generated once using the built-in image generation tool. CSS positions its nine 418 × 418 cells; the delivered bitmap is unedited. The app identifies the photography as AI-generated.
 
