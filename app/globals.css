@@ -24,3 +24,4 @@
 
 /* Expanded catalogue: concise status without crowding the ingredient cards. */
 .library-result-count{font-size:12px;color:var(--muted-foreground);margin:-6px 0 20px}.compound-pending{font-size:12px;line-height:1.65;color:var(--muted-foreground);margin:0}
+@media(max-width:767px){.ingredient-profile{grid-template-rows:auto auto;row-gap:5px}.ingredient-profile>.profile-photo{align-self:center;margin:0}.ingredient-profile .latin{margin-top:0}}
