@@ -3,10 +3,10 @@ import { existsSync } from 'node:fs';
 import { ingredients, pairings, findPairings, isPlantIngredient, matchesIngredient } from '../lib/pairings.ts';
 import { kitchenThemes, kitchenConcepts, filterKitchenConcepts, formatKitchenConcept } from '../lib/kitchen-modes.ts';
 const root = new URL('../', import.meta.url);
-assert.equal(ingredients.length, 150, 'Chef catalogue must contain exactly 150 ingredients');
-for (const id of ['egg','honey','prawn','feta','beef']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), false, `${id} must be excluded by the plant filter`);
-for (const id of ['tofu','nori','chickpea']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), true);
-for (const [query,id] of [['zucchini','courgette'],['eggplant','aubergine'],['shrimp','prawn'],['yogurt','yoghurt'],['szechuan','sichuan-pepper'],['arugula','rocket']]) assert.ok(matchesIngredient(ingredients.find(i=>i.id===id),query));
+assert.equal(ingredients.length, 166, 'Chef catalogue must contain exactly 166 ingredients');
+for (const id of ['egg','honey','prawn','feta','beef','oyster-sauce','dried-shrimp']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), false, `${id} must be excluded by the plant filter`);
+for (const id of ['tofu','nori','chickpea','wheat-starch','tapioca-starch','sesame-oil']) assert.equal(isPlantIngredient(ingredients.find(i=>i.id===id)), true);
+for (const [query,id] of [['zucchini','courgette'],['eggplant','aubergine'],['shrimp','prawn'],['yogurt','yoghurt'],['szechuan','sichuan-pepper'],['arugula','rocket'],['jiucai','garlic-chive'],['spring onion','scallion'],['chinkiang','black-vinegar'],['木耳','wood-ear'],['cheng fen','wheat-starch']]) assert.ok(matchesIngredient(ingredients.find(i=>i.id===id),query));
 assert.ok(matchesIngredient(ingredients.find(i=>i.id==='cinnamon'),'cinnamaldehyde'));
 assert.equal(new Set(ingredients.map(i=>`${i.sheet||'original'}:${i.index}`)).size, ingredients.length, 'Each ingredient needs its own image cell');
 const ids = new Set(ingredients.map(i => i.id));
@@ -50,9 +50,14 @@ for(const theme of kitchenThemes){
     assert.ok(formatKitchenConcept(c).includes(c.experiment),'Notebook export must preserve tasting experiment');
     assert.ok(formatKitchenConcept(c).includes(c.method),'Notebook export must preserve cooking method');
   }
-  const filter=(query='',technique='all',plant=false,novelty=2)=>filterKitchenConcepts(theme,query,technique,plant,novelty,id=>pairings.find(p=>p.id===id).novelty,(id,q)=>matchesIngredient(ingredients.find(i=>i.id===id),q));
-  assert.equal(filter().length,12);
-  assert.equal(filter('shrimp')[0].id,'dumpling-prawn-ginger','Alias search must work in theme components');
+  const filter=(query='',technique='all',plant=false,novelty=2,collection='all')=>filterKitchenConcepts(theme,query,technique,plant,novelty,id=>pairings.find(p=>p.id===id).novelty,(id,q)=>matchesIngredient(ingredients.find(i=>i.id===id),q),collection);
+  assert.equal(filter().length,16);
+  assert.equal(filter('','all',false,1,'reference').length,4);
+  assert.equal(filter('','all',false,1,'experiment').length,12);
+  assert.equal(filter('','all',true,1,'reference').length,0);
+  assert.equal(filter('jiucai','all',false,1,'reference')[0].id,'dumpling-pork-garlic-chive');
+  for(const c of theme.concepts.filter(c=>c.reference)){assert.ok(c.reference.url.startsWith('https://'));assert.ok(formatKitchenConcept(c).includes(c.reference.url));}
+  assert.ok(filter('shrimp').some(c=>c.id==='dumpling-prawn-ginger'),'Alias search must work in theme components');
   assert.equal(filter('shrimp','all',true).length,0,'Plant filter must exclude seafood');
   assert.equal(filter('no-such-ingredient').length,0);
   assert.equal(filter('green tea','Steam',true)[0].id,'dumpling-shiitake-tea');

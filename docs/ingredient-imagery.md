@@ -1,5 +1,15 @@
 # Expanded ingredient photography
 
+## Chinese dumpling essentials
+
+Final asset: `public/images/ingredients-chinese.png`
+
+Generated with the built-in image generation tool in generation mode. The sixteen-cell sprite was inspected and copied unchanged into the workspace. Cell order matches the ingredient indices in `lib/pairings.ts`.
+
+Prompt:
+
+> Use case: product-mockup. Asset: food photography sprite for the chef app Volatile. Create one square image, exact invisible 4 by 4 grid of sixteen equal square cells on seamless PURE WHITE. Centre every ingredient group in the inner 65% of its own cell with generous white clearance; all sixteen cells must remain equally sized. Photoreal editorial studio food photography, elevated three-quarter view, soft natural light and small contact shadows. Exact cell order LEFT TO RIGHT, TOP TO BOTTOM: 1: one compact napa cabbage, whole and cut lengthways; 2: small bundle of Chinese garlic chives with long flat dark green leaves, no flowers; 3: three short scallions with white bases and green hollow leaves; 4: small mound of pale white peppercorns; 5: toasted sesame oil, clear amber-brown liquid in a tiny clear glass dish; 6: Shaoxing rice wine, light amber liquid in a tiny clear glass dish; 7: Chinese black vinegar, very dark brown liquid in a tiny clear glass dish; 8: oyster sauce, thick glossy dark brown sauce in a tiny clear glass dish; 9: Chinese chilli oil, bright red oil with red chilli flakes in a tiny clear glass dish; 10: a small cluster of hydrated wood ear mushrooms, dark brown folded ear-shaped pieces; 11: two water chestnuts with dark brown skins plus one peeled white water chestnut cut in half; 12: a pale yellow peeled cooked bamboo shoot wedge with a few thin slices; 13: small mound of tiny orange-pink dried shrimp; 14: a small mound of cream-coloured wheat flour; 15: a small mound of fine white wheat starch in a tiny clear glass dish; 16: a small mound of white powdery tapioca starch in a tiny clear glass dish. Keep all objects isolated from adjacent cells, consistent scale and light. No text, labels, grid lines, borders, watermarks, utensils or props. Containers only where explicitly requested. Do not omit, duplicate or rearrange cells. Pure white to every edge.
+
 ## 150-ingredient edition
 
 Six sprites generated with the built-in image generation tool in generation mode. Each final asset was inspected and copied unchanged into the workspace. Each is 1254 × 1254, with a 4 × 4 grid; the larder sheet uses thirteen cells and leaves the last three empty.
@@ -78,4 +88,3 @@ Final asset: `public/images/ingredients-pantry.png`
 Prompt:
 
 > Use case: product-mockup. Create one square high-resolution 2048x2048 food photography sprite image for the chef app Volatile. Exact invisible 4 by 4 grid, sixteen equal cells, seamless PURE WHITE background. Each ingredient group centered in its cell, within inner 65% of the cell, with large white clearance. Photoreal editorial studio photography, consistent soft natural light, gentle contact shadow, elevated three-quarter camera angles. No text, labels, grid lines, dividers, props, utensils, watermarks or containers except where specified. Exact order reading LEFT TO RIGHT, TOP TO BOTTOM: cell 1: two vanilla pods; cell 2: a small pile of green cardamom pods; cell 3: a small mound of cumin seeds; cell 4: two red chillies; cell 5: a small mound of roasted coffee beans; cell 6: hazelnuts, a few shelled and one in shell; cell 7: a small mound of sesame seeds; cell 8: golden honey in a tiny clear glass dish; cell 9: a small mound of light brown miso paste; cell 10: a pale yellow butter curl; cell 11: a small wedge of blue cheese; cell 12: a small goat cheese log, one slice cut; cell 13: two raw shucked scallop meats, no shell; cell 14: a small raw salmon fillet; cell 15: one raw duck breast with pale skin; cell 16: one small raw pork chop. These sixteen ingredients must remain perfectly isolated from adjacent cells so CSS can crop each equal square. Do not omit, duplicate or swap cells. Uniform pure white image edge to edge.
-

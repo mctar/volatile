@@ -3,6 +3,7 @@ export type KitchenConcept = {
   id: string; themeId: string; title: string; subtitle: string; pairId: string;
   technique: string; plantBased: boolean; components: KitchenComponent[];
   method: string; experiment: string;
+  reference?: {tradition:string; title:string; url:string};
 };
 export type KitchenTheme = {
   id: string; label: string; title: string; accent: string; description: string;
@@ -13,9 +14,62 @@ export type KitchenTheme = {
 };
 
 const component=(role:string,title:string,instruction:string,ingredients:string[]=[]):KitchenComponent=>({role,title,instruction,ingredients});
-const wrapper=(instruction:string)=>component('Wrapper','Wheat & water',instruction);
+const wrapper=(instruction:string)=>component('Wrapper','Wheat & water',instruction,['wheat-flour']);
 
 const dumplingConcepts:KitchenConcept[]=[
+  {
+    id:'dumpling-pork-napa-jiaozi',themeId:'dumpling',title:'Pork & napa jiaozi',
+    subtitle:'Pork × napa cabbage',pairId:'napa-cabbage:pork',technique:'Boil',plantBased:false,
+    reference:{tradition:'Chinese jiaozi',title:'King Arthur Baking · Pork and Cabbage Dumplings',url:'https://www.kingarthurbaking.com/recipes/pork-and-cabbage-dumplings-recipe'},
+    components:[
+      component('Wrapper','Wheat & water','Use a rested wheat-flour dough, rolled thinner at the rim for a secure seal.',['wheat-flour']),
+      component('Filling','Pork & napa cabbage','Salt and squeeze finely chopped napa. Mix chilled raw minced pork with ginger, scallion, light soy, a little Shaoxing wine, sesame oil and white pepper; fold in the cabbage.',['pork','napa-cabbage','ginger','scallion','soy-sauce','shaoxing-wine','sesame-oil','white-pepper']),
+      component('Sauce','Black vinegar','Serve vinegar separately so each tasting can begin with the filling alone.',['black-vinegar']),
+      component('Finish','Fresh ginger','Offer a few fine ginger threads alongside the dip.',['ginger']),
+    ],
+    method:'Keep the filling chilled during assembly. Seal small half-moons, expelling trapped air. Boil until both dough and pork are fully cooked, then drain and serve. Cook a small filling sample fully when checking seasoning.',
+    experiment:'Compare two cabbage-to-pork proportions with the same wrapper and seasoning. Record the squeezed cabbage weight and compare juiciness, cohesion and leakage.',
+  },
+  {
+    id:'dumpling-pork-garlic-chive',themeId:'dumpling',title:'Pork & garlic-chive jiaozi',
+    subtitle:'Pork × Chinese garlic chives',pairId:'garlic-chive:pork',technique:'Pan-fry & steam',plantBased:false,
+    reference:{tradition:'Chinese jiaozi',title:'The Woks of Life · Pork and Chive Dumplings',url:'https://thewoksoflife.com/pork-chive-dumplings/'},
+    components:[
+      component('Wrapper','Wheat & water','Use a supple wheat wrapper with a thin rim and a slightly stronger centre.',['wheat-flour']),
+      component('Filling','Pork & garlic chives','Work ginger-scallion water gradually into chilled raw minced pork until cohesive. Season with light soy, oyster sauce, sesame oil and white pepper. Fold in finely chopped Chinese garlic chives.',['pork','garlic-chive','ginger','scallion','soy-sauce','oyster-sauce','sesame-oil','white-pepper']),
+      component('Sauce','Black vinegar & chilli oil','Offer a restrained vinegar dip with chilli oil on the side.',['black-vinegar','chilli-oil']),
+      component('Finish','Crisp base','Uncover at the end of cooking so the base becomes crisp again.'),
+    ],
+    method:'Keep the filling chilled, fill and seal crescents. Brown the bases in neutral oil, add water and cover to steam until the pork and dough are fully cooked. Uncover to evaporate remaining water. Taste only fully cooked samples.',
+    experiment:'Hold the chive amount constant and vary the added aromatic water between two small batches. Compare a juicy, cohesive centre with filling that releases loose liquid.',
+  },
+  {
+    id:'dumpling-har-gow',themeId:'dumpling',title:'Har gow',
+    subtitle:'Prawn × bamboo shoots',pairId:'bamboo-shoot:prawn',technique:'Steam',plantBased:false,
+    reference:{tradition:'Cantonese dim sum',title:'The Woks of Life · Har Gow',url:'https://thewoksoflife.com/har-gow/'},
+    components:[
+      component('Wrapper','Wheat starch & tapioca','Use a tested crystal-wrapper formula with boiling water and a little oil. Keep the dough covered; wheat flour behaves differently.',['wheat-starch','tapioca-starch']),
+      component('Filling','Prawn & bamboo','Mix chilled raw prawns until tacky while retaining some pieces. Add finely chopped commercially cooked bamboo shoots, a little oyster sauce, sesame oil, ginger and white pepper.',['prawn','bamboo-shoot','oyster-sauce','sesame-oil','ginger','white-pepper']),
+      component('Sauce','Optional light soy','Taste the dumpling plain first; offer a little light soy separately.',['soy-sauce']),
+      component('Finish','Immediate service','Steam on a lined tray with space between parcels and serve promptly.'),
+    ],
+    method:'Follow the linked reference for a complete dough formula. Press thin rounds, fill modestly and pleat gently. Steam until the wrapper is cooked and the prawns are fully cooked through. Assess the wrapper and filling together while hot.',
+    experiment:'Keep filling weight fixed and compare two wrapper thicknesses. Record sealing failures, cooked bite and how clearly the prawn remains the centre of the dish.',
+  },
+  {
+    id:'dumpling-siu-mai',themeId:'dumpling',title:'Pork & prawn siu mai',
+    subtitle:'Pork × prawn',pairId:'pork:prawn',technique:'Steam',plantBased:false,
+    reference:{tradition:'Cantonese dim sum',title:'Made With Lau · Chef Lau’s Siu Mai',url:'https://www.madewithlau.com/recipes/siu-mai'},
+    components:[
+      component('Wrapper','Thin siu mai skin','Choose thin yellow siu mai wrappers; cup them around the filling with the top open.',['wheat-flour','egg']),
+      component('Filling','Pork, prawn & shiitake','Mix chilled raw minced pork and chopped raw prawns with finely chopped prepared shiitake. Season with oyster sauce, light soy, white pepper and sesame oil; mix to a cohesive filling.',['pork','prawn','mushroom','oyster-sauce','soy-sauce','white-pepper','sesame-oil']),
+      component('Sauce','Optional chilli oil','Offer separately after a plain tasting to judge the filling on its own.',['chilli-oil']),
+      component('Finish','Carrot dice','Top with a few fine carrot dice before steaming.',['carrot']),
+    ],
+    method:'Use the linked recipe for a complete filling formula and binding method. Keep the mixture chilled, form evenly sized open cups and flatten the bases. Steam on a lined tray until pork and prawns are fully cooked through.',
+    experiment:'Use the same pork-to-prawn ratio in both batches. Vary only how finely the prawns are chopped, then compare cohesion, spring and distinct seafood bites.',
+  },
+
   {
     id:'dumpling-shiitake-chestnut',themeId:'dumpling',title:'Woodland potstickers',
     subtitle:'Shiitake × chestnut',pairId:'chestnut:mushroom',technique:'Pan-fry & steam',plantBased:true,
@@ -165,17 +219,17 @@ const dumplingConcepts:KitchenConcept[]=[
 export const kitchenThemes:KitchenTheme[]=[{
   id:'dumpling',label:'Dumpling mode',title:'A world inside',accent:'a wrapper.',
   description:'Start with a flavour connection. Give it a filling, a wrapper and a reason to take another bite.',
-  collectionNote:'From crisp potstickers to soft pasta parcels. Each starts with a connection from the flavour library.',
+  collectionNote:'Four Chinese reference dishes, plus twelve experiments. Explore the foundations, then change one thing.',
   countCaption:'ideas to fold, taste & refine',searchPlaceholder:'Try mushroom, shrimp, sesame…',
   roles:[{name:'Wrapper',prompt:'Structure & bite'},{name:'Filling',prompt:'The heart of it'},{name:'Sauce',prompt:'Balance & contrast'},{name:'Finish',prompt:'The last aromatic note'}],
   techniques:['Steam','Pan-fry & steam','Boil'],concepts:dumplingConcepts,
 }];
 export const kitchenConcepts=kitchenThemes.flatMap(t=>t.concepts);
 export const getKitchenConcept=(id:string)=>kitchenConcepts.find(c=>c.id===id);
-export function filterKitchenConcepts(theme:KitchenTheme,query:string,technique:string,plantOnly:boolean,novelty:number,pairNovelty:(id:string)=>number,ingredientMatches:(id:string,query:string)=>boolean){
+export function filterKitchenConcepts(theme:KitchenTheme,query:string,technique:string,plantOnly:boolean,novelty:number,pairNovelty:(id:string)=>number,ingredientMatches:(id:string,query:string)=>boolean,collection='all'){
   const words=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  return theme.concepts.filter(c=>(technique==='all'||c.technique===technique)&&(!plantOnly||c.plantBased)&&words.every(word=>[c.title,c.subtitle,...c.components.flatMap(p=>[p.title,p.instruction])].join(' ').toLowerCase().includes(word)||c.components.some(p=>p.ingredients.some(id=>ingredientMatches(id,word))))).sort((a,b)=>Math.abs(pairNovelty(a.pairId)-novelty)-Math.abs(pairNovelty(b.pairId)-novelty));
+  return theme.concepts.filter(c=>(collection==='all'||(collection==='reference'?!!c.reference:!c.reference))&&(technique==='all'||c.technique===technique)&&(!plantOnly||c.plantBased)&&words.every(word=>[c.title,c.subtitle,c.reference?.tradition||'',...c.components.flatMap(p=>[p.title,p.instruction])].join(' ').toLowerCase().includes(word)||c.components.some(p=>p.ingredients.some(id=>ingredientMatches(id,word))))).sort((a,b)=>Math.abs(pairNovelty(a.pairId)-novelty)-Math.abs(pairNovelty(b.pairId)-novelty));
 }
 export function formatKitchenConcept(c:KitchenConcept){
-  return `${c.title} — ${kitchenThemes.find(t=>t.id===c.themeId)!.label}\n${c.subtitle} · ${c.technique}\n\n${c.components.map(p=>`${p.role}: ${p.title}\n${p.instruction}`).join('\n\n')}\n\nMethod: ${c.method}\n\nTasting experiment: ${c.experiment}`;
+  return `${c.title} — ${kitchenThemes.find(t=>t.id===c.themeId)!.label}\n${c.subtitle} · ${c.technique}\n\n${c.components.map(p=>`${p.role}: ${p.title}\n${p.instruction}`).join('\n\n')}\n\nMethod: ${c.method}\n\nTasting experiment: ${c.experiment}${c.reference?`\n\nCulinary reference: ${c.reference.title}\n${c.reference.url}`:''}`;
 }

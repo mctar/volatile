@@ -1,8 +1,8 @@
 # Catalogue research notes
 
-The 150-ingredient edition contains 615 original, manually authored culinary ideas. The suggestions have not been validated in sensory trials. Novelty is an editorial rating, and a shared annotated compound is only a reason to explore a pairing, not a prediction of compatibility.
+The 166-ingredient edition contains 680 original, manually authored culinary ideas. The suggestions have not been validated in sensory trials. Novelty is an editorial rating, and a shared annotated compound is only a reason to explore a pairing, not a prediction of compatibility.
 
-134 ingredient profiles have selected compound annotations. Sixteen leave the chemical list empty and say so in the interface. An empty list means unannotated, not chemically uninteresting. A contrast label also does not prove that the ingredients lack shared compounds. Concentrations, thresholds, food matrices, variety and preparation are not modelled in the ranking.
+134 ingredient profiles have selected compound annotations. Thirty-two leave the chemical list empty and say so in the interface. An empty list means unannotated, not chemically uninteresting. A contrast label also does not prove that the ingredients lack shared compounds. Concentrations, thresholds, food matrices, variety and preparation are not modelled in the ranking.
 
 No research database was bulk imported. The following primary studies and reference records were consulted for selected annotations and to check the effect of preparation. They are not evidence that every proposed dish will work, or a row-level validation of the entire catalogue.
 
@@ -21,3 +21,21 @@ No research database was bulk imported. The following primary studies and refere
 - [NIST: dill ether](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74410109): molecular formula reference.
 
 All ingredient photographs were generated for this app. The plant filter applies to the two named ingredients, excluding dairy, eggs, meat, seafood and honey; the preparation suggestions may mention additional animal ingredients.
+
+
+## Chinese dumpling essentials
+
+Sixteen ingredient profiles and 65 original culinary pairing notes were added after a gap check against Chinese dumpling cookery. These new profiles intentionally leave compound annotations empty: culinary familiarity does not establish a measured volatile profile. Flour and starch pairings describe structural roles and texture, not an asserted molecular aroma match. Oyster sauce is explicitly marked animal-derived even though its category is Pantry.
+
+The four Chinese reference concepts link to complete recipes. Their condensed instructions and tasting comparisons are authored for this app, and have not been kitchen-tested by Volatile. Existing experimental concepts remain available. Sources consulted:
+
+- [Pork and cabbage dumplings — King Arthur Baking](https://www.kingarthurbaking.com/recipes/pork-and-cabbage-dumplings-recipe)
+- [Pork and chive dumplings — The Woks of Life](https://thewoksoflife.com/pork-chive-dumplings/)
+- [Har gow — The Woks of Life](https://thewoksoflife.com/har-gow/)
+- [Siu mai — Made With Lau](https://www.madewithlau.com/recipes/siu-mai)
+- [Sichuan wontons — Red House Spice](https://redhousespice.com/sichuan-spicy-wonton-in-chili-oil/)
+- [Vegetable dumplings — The Woks of Life](https://thewoksoflife.com/vegetable-dumplings/)
+- [Chiu Chow dumplings — Epicurious](https://www.epicurious.com/recipes/food/views/chiu-chow-dumplings-379785)
+- [Wood ear and water chestnut dumplings — Cook Like Asian](https://cooklikeasian.com/chinese-pork-dumplings/)
+
+The catalogue distinguishes Chinese garlic chives from European chives, toasted sesame oil from sesame seeds, dried shrimp from fresh prawns, and wheat flour from refined wheat starch. The generic soy-sauce profile explains light/dark differences; the shiitake profile notes fresh/dried preparation differences. Those two remain broad profiles, not separate measured variants.
